@@ -1,11 +1,5 @@
 package com.medallia.word2vec.neuralnetwork;
 
-import com.google.common.collect.ImmutableMultiset;
-import com.medallia.word2vec.Word2VecTrainerBuilder.TrainingProgressListener;
-import com.medallia.word2vec.huffman.HuffmanCoding.HuffmanNode;
-
-import java.util.Map;
-
 /** Fixed configuration for training the neural network */
 public class NeuralNetworkConfig {
 	final int numThreads;
@@ -41,9 +35,40 @@ public class NeuralNetworkConfig {
 		this.downSampleRate = downSampleRate;
 	}
 
-	/** @return {@link NeuralNetworkTrainer} */
-	public NeuralNetworkTrainer createTrainer(ImmutableMultiset<String> vocab, Map<String, HuffmanNode> huffmanNodes, TrainingProgressListener listener) {
-		return type.createTrainer(this, vocab, huffmanNodes, listener);
+	public int getNumThreads() {
+		return numThreads;
+	}
+
+	public int getIterations() {
+		return iterations;
+	}
+
+	public NeuralNetworkType getType() {
+		return type;
+	}
+
+	public int getLayerSize() {
+		return layerSize;
+	}
+
+	public int getWindowSize() {
+		return windowSize;
+	}
+
+	public int getNegativeSamples() {
+		return negativeSamples;
+	}
+
+	public boolean isUseHierarchicalSoftmax() {
+		return useHierarchicalSoftmax;
+	}
+
+	public double getInitialLearningRate() {
+		return initialLearningRate;
+	}
+
+	public double getDownSampleRate() {
+		return downSampleRate;
 	}
 	
 	@Override public String toString() {

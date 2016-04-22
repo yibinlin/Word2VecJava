@@ -4,6 +4,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multiset;
+import com.medallia.word2vec.ported.Word2VecTrainer;
 import com.medallia.word2vec.util.AutoLog;
 import org.apache.commons.logging.Log;
 import com.medallia.word2vec.neuralnetwork.NeuralNetworkConfig;
@@ -63,6 +64,8 @@ import java.util.Map;
  */
 public class Word2VecTrainerBuilder {
 	private static final Log LOG = AutoLog.getLog();
+
+	private static volatile int debugLevel = 1;
 	
 	private Integer layerSize;
 	private Integer windowSize;
@@ -227,6 +230,7 @@ public class Word2VecTrainerBuilder {
 				: Optional.of(this.vocab);
 		
 		return new Word2VecTrainer(
+				LOG,
 				minFrequency,
 				vocab,
 				new NeuralNetworkConfig(
