@@ -1,6 +1,6 @@
 package com.medallia.word2vec.ported;
 
-import tiny.Concurrent.AC;
+import com.medallia.word2vec.util.AC;
 
 import java.util.Iterator;
 
@@ -10,6 +10,6 @@ import java.util.Iterator;
  *
  * This is not part of code ported from the original Word2Vec C version.
  */
-interface WordIterator extends Iterator<String>, AutoCloseable {
+interface WordIterator extends Iterator<String>, AC {
 	String NEW_LINE_TOKEN = "</s>";
 }

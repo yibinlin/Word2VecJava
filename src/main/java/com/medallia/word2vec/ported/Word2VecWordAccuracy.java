@@ -47,11 +47,11 @@ public class Word2VecWordAccuracy {
 	 * <li>CACN: total correct TOP1 question count </li>
 	 * <li>SECN: total syntactic questions count </li>
 	 * <li>SYCN: total semantic questions count </li>
-	 * <li>SEAC: total syntactic TOP1 orrect questions count </li>
+	 * <li>SEAC: total syntactic TOP1 correct questions count </li>
 	 * <li>SYAC: total semantic TOP1 correct questions count </li>
 	 * <li>QID: section id </li>
 	 * <li>TQ: total questions (including unanswered ones) count </li>
-	 * <li>TQS: total questions that the program are able to answer </li>
+	 * <li>TQS: total questions that the program is able to answer </li>
 	 * </ul>
 	 */
 	private int TCN = 0, CCN = 0, TACN = 0, CACN = 0, SECN = 0, SYCN = 0, SEAC = 0, SYAC = 0, QID = 0, TQ = 0, TQS = 0;

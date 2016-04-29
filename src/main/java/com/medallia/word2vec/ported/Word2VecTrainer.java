@@ -1,6 +1,5 @@
 package com.medallia.word2vec.ported;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Multiset;
@@ -28,7 +27,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 /**
  * Class to perform training the word2vec model.
@@ -217,7 +215,6 @@ public class Word2VecTrainer {
 	}
 
 	/** Iterate a file by word, only for testing. */
-	@VisibleForTesting
 	public static class FileWordIterator implements WordIterator {
 		private static final Log LOG = AutoLog.getLog();
 
@@ -285,6 +282,11 @@ public class Word2VecTrainer {
 		}
 
 		@Override
+		public void remove() {
+			throw new UnsupportedOperationException("Read only iterator.");
+		}
+
+		@Override
 		public void close() {
 			try {
 				file.close();
@@ -297,7 +299,6 @@ public class Word2VecTrainer {
 		 * @return sentences, as defined in {@link Word2VecTrainer}, by iterating a
 		 * {@link RandomAccessFile} using the logic of {@link FileWordIterator}.
 		 */
-		@VisibleForTesting
 		public static Iterable<List<String>> getSentencesFromFile(RandomAccessFile file) {
 			try (FileWordIterator wordIterator = new FileWordIterator(file)) {
 				List<List<String>> sentences = new ArrayList<>();
